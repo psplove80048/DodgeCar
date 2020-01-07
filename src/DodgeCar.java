@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
 public class DodgeCar implements ActionListener, KeyListener, MouseListener, MouseMotionListener {
 
 	// 常數
@@ -27,7 +26,7 @@ public class DodgeCar implements ActionListener, KeyListener, MouseListener, Mou
 	public CollisionDetection CD = new CollisionDetection();
 	public Screen screen = new Screen();
 
-	Car mycar = new Car(1, 300, 900);
+	Car mycar = new PlayerCar(1, 300, 900);
 	ArrayList<Road> roads = new ArrayList<Road>();
 	ArrayList<Car> cars = new ArrayList<Car>();
 
@@ -55,7 +54,7 @@ public class DodgeCar implements ActionListener, KeyListener, MouseListener, Mou
 		roads.add(new Road(200, 0, 200, HEIGHT, 280));
 		roads.add(new Road(300, -HEIGHT, 200, 0, 280));
 
-		cars.add(new Car(2, (roads.get(0).leftupX + roads.get(0).rightupX) / 2, 0));
+		cars.add(new ComputerSmallCar(2, (roads.get(0).leftupX + roads.get(0).rightupX) / 2, 0));
 		// cars.add(new Car(3,(roads.get(0).leftupX +roads.get(0).rightupX)/2,-300));
 	}
 
@@ -110,23 +109,23 @@ public class DodgeCar implements ActionListener, KeyListener, MouseListener, Mou
 						switch (car) {
 						case 1:
 							r = (int) Math.random() * 100 + 100;
-							cars.add(new Car(2, roads.get(1).leftdnX + 150, 0));
+							cars.add(new ComputerSmallCar(2, roads.get(1).leftdnX + 150, 0));
 							break;
 						case 2:
 							r = (int) Math.random() * 100 + 100;
-							cars.add(new Car(2, roads.get(1).leftdnX + 100, 0));
+							cars.add(new ComputerSmallCar(2, roads.get(1).leftdnX + 100, 0));
 							break;
 						case 3:
 							r = (int) Math.random() * 100 + 100;
-							cars.add(new Car(3, roads.get(1).leftdnX + 150, 0));
+							cars.add(new ComputerBigCar(3, roads.get(1).leftdnX + 150, 0));
 							break;
 						case 4:
 							r = (int) Math.random() * 100 + 100;
-							cars.add(new Car(2, roads.get(1).leftdnX + 120, 0));
+							cars.add(new ComputerSmallCar(2, roads.get(1).leftdnX + 120, 0));
 							break;
 						case 5:
 							r = (int) Math.random() * 100 + 100;
-							cars.add(new Car(3, roads.get(1).leftdnX + 150, 0));
+							cars.add(new ComputerBigCar(3, roads.get(1).leftdnX + 150, 0));
 							break;
 
 						}

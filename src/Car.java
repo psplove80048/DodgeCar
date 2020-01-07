@@ -1,22 +1,20 @@
-import java.awt.BasicStroke;
-import java.awt.Color;
+
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 
-public class Car {
+public abstract class Car {
 
-	private int x;
-	private int y;
+	protected int x;
+	protected int y;
 	// 車體中車，滑鼠座標用
-	private int cx = 300;
-	private int cy = 900;
-	private int width = 50;
-	private int height = 50;
-	private int number;
-	private int speed;
+	protected int cx = 300;
+	protected int cy = 900;
+	protected int width = 50;
+	protected int height = 50;
+	protected int number;
+	protected int speed;
 	// x與y的加速度
-	private double xa = 0;
-	private double ya = 0;
+	protected double xa = 0;
+	protected double ya = 0;
 
 	public int myCar = 1;
 	public int aiCar = 2;
@@ -24,56 +22,48 @@ public class Car {
 	public int roadBlock = 4;
 	public int hole = 5;
 	public boolean isOver;
-
-	public Car(int number, int x, int y) {
-		switch (number) {
-		case 1:
-			// 玩家車
-			this.number = number;
-			this.x = x;
-			this.y = y;
-			this.setWidth(30);
-			this.setHeight(50);
-			this.speed = 20;
-
-			break;
-		case 2:
-			// 電腦小車
-			this.number = number;
-			this.x = x;
-			this.y = y;
-			this.setWidth(30);
-			this.setHeight(50);
-			this.speed = 8;
-			break;
-		case 3:
-			// 電腦大車
-			this.number = number;
-			this.x = x;
-			this.y = y;
-			this.setWidth(50);
-			this.setHeight(150);
-			this.speed = 5;
-			break;
-		case 4:
-			// 路障一
-			this.number = number;
-			this.x = x;
-			this.y = y;
-			this.setWidth(75);
-			this.setHeight(30);
-			break;
-		case 5:
-			// 路障二
-			this.number = number;
-			this.x = x;
-			this.y = y;
-			this.setWidth(50);
-			this.setHeight(50);
-			break;
-		}
-
-	}
+	
+//	public Car(int number, int x, int y) {
+//		this.number = number;
+//		this.x = x;
+//		this.y = y;
+//		Car car = null;
+//		switch (number) {
+//		case 1:
+//			// 玩家車
+//			car = new PlayerCar(number, x, y);
+////			this.setWidth(30);
+////			this.setHeight(50);
+////			this.speed = 20;
+//			break;
+//		case 2:
+//			// 電腦小車
+//			car = new ComputerSmallCar(number, x, y);
+////			this.setWidth(30);
+////			this.setHeight(50);
+////			this.speed = 8;
+//			break;
+//		case 3:
+//			// 電腦大車
+//			car = new ComputerBigCar(number, x, y);
+////			this.setWidth(50);
+////			this.setHeight(150);
+////			this.speed = 5;
+//			break;
+//		case 4:
+//			// 路障一
+//			car = new Roadblock1(number, x, y);
+////			this.setWidth(75);
+////			this.setHeight(30);
+//			break;
+//		case 5:
+//			car = new Roadblock2(number, x, y);
+////			this.setWidth(50);
+////			this.setHeight(50);
+//			break;
+//		}
+//
+//	}
 
 	public void move(int dx, int dy) {
 		// 車子移動，玩家車添加 加速貫性。參數dx,dy為移動目的地。
@@ -136,47 +126,47 @@ public class Car {
 		this.y += speed;
 
 	}
-
-	public void drawCar(Graphics g) {
-		Graphics2D g2 = (Graphics2D) g;
-		g2.setStroke(new BasicStroke(3));
-
-		switch (number) {
-		case 1:
-			// 玩家車
-			g2.setColor(Color.red);
-			g2.fillRect(x, y, width, height);
-			g2.setColor(Color.black);
-			g2.drawRect(x, y, width, height);
-
-			break;
-		case 2:
-			// 電腦小車
-			g2.setColor(Color.blue);
-			g2.fillRect(x, y, width, height);
-			g2.setColor(Color.black);
-			g2.drawRect(x, y, width, height);
-
-			break;
-		case 3:
-			// 電腦大車
-			g2.setColor(Color.yellow);
-			g2.fillRect(x, y, width, height);
-			g2.setColor(Color.black);
-			g2.drawRect(x, y, width, height);
-
-			break;
-		case 4:
-			// 路障一
-
-			break;
-		case 5:
-			// 路障二
-
-			break;
-		}
-
-	}
+	abstract public void drawCar(Graphics g);
+//	public void drawCar(Graphics g) {
+//		Graphics2D g2 = (Graphics2D) g;
+//		g2.setStroke(new BasicStroke(3));
+//
+//		switch (number) {
+//		case 1:
+//			// 玩家車
+//			g2.setColor(Color.red);
+//			g2.fillRect(x, y, width, height);
+//			g2.setColor(Color.black);
+//			g2.drawRect(x, y, width, height);
+//
+//			break;
+//		case 2:
+//			// 電腦小車
+//			g2.setColor(Color.blue);
+//			g2.fillRect(x, y, width, height);
+//			g2.setColor(Color.black);
+//			g2.drawRect(x, y, width, height);
+//
+//			break;
+//		case 3:
+//			// 電腦大車
+//			g2.setColor(Color.yellow);
+//			g2.fillRect(x, y, width, height);
+//			g2.setColor(Color.black);
+//			g2.drawRect(x, y, width, height);
+//
+//			break;
+//		case 4:
+//			// 路障一
+//
+//			break;
+//		case 5:
+//			// 路障二
+//
+//			break;
+//		}
+//
+//	}
 
 	public int getX() {
 		return x;
